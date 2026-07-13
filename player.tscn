@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cdb1dj8stjsay"]
+
+[ext_resource type="Script" uid="uid://chuwymg8eh4yg" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://d0kksntwpcetu" path="res://Assets/Model/trovuzian_3_0.tscn" id="2_cvnsp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8mp8i"]
+radius = 0.45458984
+height = 2.3144226
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nwfti"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1526284948]
+script = ExtResource("1_cvnsp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2000614928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0415301, 0)
+shape = SubResource("CapsuleShape3D_8mp8i")
+
+[node name="Trovuzian3_0" parent="." unique_id=948749450 instance=ExtResource("2_cvnsp")]
+
+[node name="Camera Pivot" type="Node3D" parent="." unique_id=1703905378]
+unique_name_in_owner = true
+transform = Transform3D(1.192488e-08, 0, -1, 0, 0.99999994, 0, 0.99999994, 0, 1.1924881e-08, 0, 2, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Camera Pivot" unique_id=672726274]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+shape = SubResource("SphereShape3D_nwfti")
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="Camera Pivot/SpringArm3D" unique_id=246690200]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, -5.563627e-08, 0, 1, 0, 5.5636278e-08, 0, 1, 0, 0, 5)
